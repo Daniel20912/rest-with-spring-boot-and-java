@@ -1,14 +1,15 @@
-package br.com.erudio.services;
+package com.danieloliveira.restwithspringbootandjava.services;
 
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.danieloliveira.restwithspringbootandjava.exceptions.ResourceNotFoundException;
+import com.danieloliveira.restwithspringbootandjava.model.Person;
+import com.danieloliveira.restwithspringbootandjava.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.erudio.exceptions.ResourceNotFoundException;
-import br.com.erudio.model.Person;
-import br.com.erudio.repositories.PersonRepository;
+
 
 @Service
 public class PersonServices {

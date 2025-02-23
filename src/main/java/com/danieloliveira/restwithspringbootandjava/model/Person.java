@@ -1,4 +1,4 @@
-package br.com.erudio.model;
+package com.danieloliveira.restwithspringbootandjava.model;
 
 import java.io.Serializable;
 

@@ -1,7 +1,9 @@
-package br.com.erudio.exceptions.handler;
+package com.danieloliveira.restwithspringbootandjava.exceptions.handler;
 
 import java.util.Date;
 
+import com.danieloliveira.restwithspringbootandjava.exceptions.ExceptionResponse;
+import com.danieloliveira.restwithspringbootandjava.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import br.com.erudio.exceptions.ExceptionResponse;
-import br.com.erudio.exceptions.ResourceNotFoundException;
+
 
 @ControllerAdvice
 @RestController

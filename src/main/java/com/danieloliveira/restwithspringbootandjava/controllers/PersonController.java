@@ -1,7 +1,9 @@
-package br.com.erudio.controllers;
+package com.danieloliveira.restwithspringbootandjava.controllers;
 
 import java.util.List;
 
+import com.danieloliveira.restwithspringbootandjava.model.Person;
+import com.danieloliveira.restwithspringbootandjava.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.erudio.model.Person;
-import br.com.erudio.services.PersonServices;
+
 
 @RestController
 @RequestMapping("/person")

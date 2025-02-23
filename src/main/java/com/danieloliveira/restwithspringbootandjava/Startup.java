@@ -1,4 +1,4 @@
-package br.com.erudio;
+package com.danieloliveira.restwithspringbootandjava;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

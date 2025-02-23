@@ -1,4 +1,4 @@
-package br.com.erudio.exceptions;
+package com.danieloliveira.restwithspringbootandjava.exceptions;
 
 import java.io.Serializable;
 import java.util.Date;
