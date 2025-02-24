@@ -1,8 +1,10 @@
 package com.danieloliveira.restwithspringbootandjava.services;
 
-import com.danieloliveira.restwithspringbootandjava.VO.PersonVO;
+import com.danieloliveira.restwithspringbootandjava.VO.v1.PersonVO;
+import com.danieloliveira.restwithspringbootandjava.VO.v2.PersonVOv2;
 import com.danieloliveira.restwithspringbootandjava.exceptions.ResourceNotFoundException;
 import com.danieloliveira.restwithspringbootandjava.mapper.DozerMapper;
+import com.danieloliveira.restwithspringbootandjava.mapper.custom.PersonMapper;
 import com.danieloliveira.restwithspringbootandjava.model.Person;
 import com.danieloliveira.restwithspringbootandjava.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,11 @@ import java.util.logging.Logger;
 @Service
 public class PersonServices {
 
+    private final Logger logger = Logger.getLogger(PersonServices.class.getName());
     @Autowired
     PersonRepository repository;
-    private Logger logger = Logger.getLogger(PersonServices.class.getName());
+    @Autowired
+    PersonMapper mapper;
 
     public List<PersonVO> findAll() {
 
@@ -36,14 +40,24 @@ public class PersonServices {
         return DozerMapper.parseObject(entity, PersonVO.class);
     }
 
-    public PersonVO create(PersonVO personVO) {
+    public PersonVO createV2(PersonVO personVO) {
 
         logger.info("Creating one person!");
 
         var entity = DozerMapper.parseObject(personVO, Person.class);
 
-        // sava a entidade e dps retorna o VO dela
+        // salva a entidade e dps retorna o VO dela
         return DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+    }
+
+    public PersonVOv2 createV2(PersonVOv2 personVOv2) {
+
+        logger.info("Creating one person!");
+
+        var entity = mapper.convertVOToEntity(personVOv2);
+
+        // salva a entidade e dps retorna o VO dela
+        return mapper.convertEntityToVO(repository.save(entity));
     }
 
     public PersonVO update(PersonVO person) {

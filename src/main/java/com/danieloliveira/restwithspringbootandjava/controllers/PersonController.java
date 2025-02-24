@@ -1,6 +1,7 @@
 package com.danieloliveira.restwithspringbootandjava.controllers;
 
-import com.danieloliveira.restwithspringbootandjava.VO.PersonVO;
+import com.danieloliveira.restwithspringbootandjava.VO.v1.PersonVO;
+import com.danieloliveira.restwithspringbootandjava.VO.v2.PersonVOv2;
 import com.danieloliveira.restwithspringbootandjava.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -31,7 +32,13 @@ public class PersonController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public PersonVO create(@RequestBody PersonVO person) {
-        return service.create(person);
+        return service.createV2(person);
+    }
+
+    @PostMapping(value= "/v2", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVOv2 createV2(@RequestBody PersonVOv2 person) {
+        return service.createV2(person);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
