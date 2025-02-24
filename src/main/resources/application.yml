@@ -2,7 +2,7 @@ spring:
   datasource:
     dbcp2:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/rest_with_spring_boot_java?useTimezone=true&serverTimezone=UTC
+      url: jdbc:mysql://localhost/rest_with_spring_boot_java?useSSL=false
       username: root
       password: 22092003
   jpa:
