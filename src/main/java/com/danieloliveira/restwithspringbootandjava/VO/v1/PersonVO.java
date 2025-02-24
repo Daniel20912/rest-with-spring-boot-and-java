@@ -1,15 +1,26 @@
 package com.danieloliveira.restwithspringbootandjava.VO.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serial;
 import java.io.Serializable;
 
-
+// altera a ordem em que os campos devem ser informados
+@JsonPropertyOrder({"id", "address", "firstName", "lastName", "gender"})
 public class PersonVO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
 
     private Long id;
+
+    // dá um nome personalizado ao campo
+    @JsonProperty("first_name")
     private String firstName;
+
+    @JsonProperty("last_name")
     private String lastName;
     private String address;
     private String gender;
