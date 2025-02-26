@@ -2,19 +2,24 @@ package com.danieloliveira.restwithspringbootandjava.VO.v1;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 // altera a ordem em que os campos devem ser informados
-@JsonPropertyOrder({"id", "address", "firstName", "lastName", "gender"})
-public class PersonVO implements Serializable {
+@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
+public class PersonVO extends RepresentationModel<PersonVO> implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
 
-    private Long id;
+    @Mapping("id")
+    @JsonProperty("id")
+    private Long key; // o representation model já tem um atributo id, precisando mudar o nome
 
     // dá um nome personalizado ao campo
     @JsonProperty("first_name")
@@ -28,12 +33,12 @@ public class PersonVO implements Serializable {
     public PersonVO() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getKey() {
+        return key;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public String getFirstName() {
@@ -69,48 +74,15 @@ public class PersonVO implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((address == null) ? 0 : address.hashCode());
-        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + ((gender == null) ? 0 : gender.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PersonVO personVO = (PersonVO) o;
+        return Objects.equals(key, personVO.key) && Objects.equals(firstName, personVO.firstName) && Objects.equals(lastName, personVO.lastName) && Objects.equals(address, personVO.address) && Objects.equals(gender, personVO.gender);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        PersonVO other = (PersonVO) obj;
-        if (address == null) {
-            if (other.address != null)
-                return false;
-        } else if (!address.equals(other.address))
-            return false;
-        if (firstName == null) {
-            if (other.firstName != null)
-                return false;
-        } else if (!firstName.equals(other.firstName))
-            return false;
-        if (gender == null) {
-            if (other.gender != null)
-                return false;
-        } else if (!gender.equals(other.gender))
-            return false;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (lastName == null) {
-            return other.lastName == null;
-        } else return lastName.equals(other.lastName);
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), key, firstName, lastName, address, gender);
     }
 }
