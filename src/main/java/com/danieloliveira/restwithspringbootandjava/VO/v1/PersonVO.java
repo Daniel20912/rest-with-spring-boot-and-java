@@ -9,8 +9,8 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-// altera a ordem em que os campos devem ser informados
-@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
+//// altera a ordem em que os campos devem ser informados
+//@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
 public class PersonVO extends RepresentationModel<PersonVO> implements Serializable {
 
     @Serial
@@ -22,10 +22,10 @@ public class PersonVO extends RepresentationModel<PersonVO> implements Serializa
     private Long key; // o representation model já tem um atributo id, precisando mudar o nome
 
     // dá um nome personalizado ao campo
-    @JsonProperty("first_name")
+//    @JsonProperty("first_name")
     private String firstName;
 
-    @JsonProperty("last_name")
+//    @JsonProperty("last_name")
     private String lastName;
     private String address;
     private String gender;
