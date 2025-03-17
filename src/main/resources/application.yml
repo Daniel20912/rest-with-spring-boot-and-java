@@ -1,5 +1,7 @@
 cors:
   originPatterns: http://localhost:8080,http://localhost:3000
+file: # propriedade customizada criada para dizer o diretório onde será salvo os arquivos
+  upload-dir: /Code/UploadDir
 security:
   jwt:
     token:
@@ -19,6 +21,12 @@ spring:
         # hibernate:
       # dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false
+  servlet:
+    multipart:
+      enabled: true # habilita multipart para trabalhar com transferência de arquivos
+      file-size-threshold: 2KB # tamanho em kb que serão ocupados em memória, após esse passar desse valor irá gravar em disco
+      max-file-size: 200MB
+      max-request-size: 215MB
 springdoc:
   pathsToMatch: /api/**/v1/**
   swagger-ui:
